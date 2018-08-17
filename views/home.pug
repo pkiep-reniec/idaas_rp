@@ -1,0 +1,136 @@
+extends layout
+
+block content
+    form(method="post" id="form")
+        h4(class="margin-top col-sm-12")  Config
+        div(class="col-md-12")
+            select(class="form-control" name="op" id="op")
+                option(value="0") Seleccionar
+                each op in ops
+                    option(value=op.id) #{op.url}
+
+            div(class="form-group margin-top")
+                label(for="url") Url:
+                input(class="form-control clean-data" name="url" id="url" value=defaultUrl)
+
+            div(class="form-group margin-top")
+                label(for="client_id") Client ID:
+                input(class="form-control clean-data" name="client_id" id="client_id" value=defaultClientId)
+
+            div(class="form-group margin-top")
+                label(for="client_secret") Client Secret:
+                input(class="form-control clean-data" name="client_secret" id="client_secret" value=defaultClientSecret)
+
+            div(class="form-group margin-top")
+                label(for="redirect_uri") Redirect Uri:
+                input(class="form-control clean-data" name="redirect_uri" id="redirect_uri" value=baseUrl + 'auth-endpoint')
+
+            div(class="checkbox")
+                label
+                    input(class="clean-data" type="checkbox" name="save" id="save" checked)
+                    .
+                        Guardar config
+
+        h4(class="margin-top col-sm-12")  Prompt
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="prompt_none" id="prompt_none")
+                .
+                    none
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="prompt_login" id="prompt_login")
+                .
+                    login
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="prompt_consent" id="prompt_consent")
+                .
+                    consent
+
+        h4(class="margin-top col-sm-12")  Scopes
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="scope_profile" id="scope_profile" checked)
+                .
+                    profile
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="scope_email" id="scope_email")
+                .
+                    email
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="scope_phone" id="scope_phone")
+                .
+                    phone
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="scope_offline_access" id="scope_offline_access")
+                .
+                    offline_access
+
+        h4(class="margin-top col-sm-12")  Acr
+        div(class="radio col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="radio" name="acr_value" value="one_factor" checked)
+                .
+                    one_factor
+        div(class="radio col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="radio" name="acr_value" value="two_factor")
+                .
+                    two_factor
+        div(class="radio col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="radio" name="acr_value" value="pki_dnie")
+                .
+                    pki_dnie
+        div(class="radio col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="radio" name="acr_value" value="pki_token")
+                .
+                    pki_token
+        div(class="radio col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="radio" name="acr_value" value="only_password")
+                .
+                    only_password
+
+        h4(class="margin-top col-sm-12")  Response Types
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="response_code" id="response_code" checked)
+                .
+                    code
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="response_id_token" id="response_id_token")
+                .
+                    id_token
+        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+            label
+                input(type="checkbox" name="response_token" id="response_token")
+                .
+                    token
+
+        h4(class="margin-top col-sm-12")  More Params
+        div(class="col-sm-12")
+            div(class="form-group")
+                label(for="max_age") Max Age:
+                input(class="form-control" name="max_age" id="max_age")
+
+            div(class="form-group")
+                label(for="login_hint") Login hint:
+                input(class="form-control" name="login_hint" id="login_hint")
+
+        div(class="col-sm-12 text-center content-btn")
+            button(class="btn btn-primary" id="btnSubmit") Autenticar
+
+block scripts
+    script.
+        var data = '#{data}';
+        var idaasUrl = '#{idaasUrl}';
+
+    script(src="js/main.js")
+    script(src="js/home.js")

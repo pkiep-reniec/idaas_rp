@@ -1,0 +1,7 @@
+/node_modules
+/public/libs
+/config/config.json
+/.idea
+*.rdb
+*.log*
+package-lock.json

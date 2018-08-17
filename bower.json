@@ -1,0 +1,22 @@
+{
+  "name": "idaas_rp",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Miguel Pazo <miguel.ps19@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "SpinKit": "spinkit#^1.2.5",
+    "jsonTreeViewer": "https://github.com/summerstyle/jsonTreeViewer.git#^0.6.0"
+  }
+}

@@ -1,0 +1,34 @@
+h3 {
+    margin-bottom: 25px;
+}
+
+h4 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.checkbox,
+.radio {
+    margin-top: -5px;
+}
+
+.margin-top {
+    margin-top: 35px;
+}
+
+.content-btn {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.jsontree_value_string {
+    word-wrap: break-word;
+}
