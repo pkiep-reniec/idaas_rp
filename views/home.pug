@@ -2,7 +2,8 @@ extends layout
 
 block content
     form(method="post" id="form")
-        h4(class="margin-top col-sm-12")  Config
+        div(class="col-md-12")
+            h4(class="margin-top")  Config
         div(class="col-md-12")
             select(class="form-control" name="op" id="op")
                 option(value="0") Seleccionar
@@ -23,7 +24,7 @@ block content
 
             div(class="form-group margin-top")
                 label(for="redirect_uri") Redirect Uri:
-                input(class="form-control clean-data" name="redirect_uri" id="redirect_uri" value=baseUrl + 'auth-endpoint')
+                input(class="form-control clean-data" name="redirect_uri" id="redirect_uri" value=baseUrl + '/auth-endpoint')
 
             div(class="checkbox")
                 label
@@ -31,90 +32,95 @@ block content
                     .
                         Guardar config
 
-        h4(class="margin-top col-sm-12")  Prompt
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="col-md-12")
+            h4(class="margin-top")  Prompt
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="prompt_none" id="prompt_none")
                 .
                     none
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="prompt_login" id="prompt_login")
                 .
                     login
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="prompt_consent" id="prompt_consent")
                 .
                     consent
 
-        h4(class="margin-top col-sm-12")  Scopes
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="col-md-12")
+            h4(class="margin-top")  Scopes
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="scope_profile" id="scope_profile" checked)
                 .
                     profile
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="scope_email" id="scope_email")
                 .
                     email
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="scope_phone" id="scope_phone")
                 .
                     phone
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="scope_offline_access" id="scope_offline_access")
                 .
                     offline_access
 
-        h4(class="margin-top col-sm-12")  Acr
-        div(class="radio col-xs-12 col-sm-4 col-md-2")
+        div(class="col-md-12")
+            h4(class="margin-top")  Acr
+        div(class="radio col-sm-12 col-md-2")
             label
                 input(type="radio" name="acr_value" value="one_factor" checked)
                 .
                     one_factor
-        div(class="radio col-xs-12 col-sm-4 col-md-2")
+        div(class="radio col-sm-12 col-md-2")
             label
                 input(type="radio" name="acr_value" value="two_factor")
                 .
                     two_factor
-        div(class="radio col-xs-12 col-sm-4 col-md-2")
+        div(class="radio col-sm-12 col-md-2")
             label
                 input(type="radio" name="acr_value" value="pki_dnie")
                 .
                     pki_dnie
-        div(class="radio col-xs-12 col-sm-4 col-md-2")
+        div(class="radio col-sm-12 col-md-2")
             label
                 input(type="radio" name="acr_value" value="pki_token")
                 .
                     pki_token
-        div(class="radio col-xs-12 col-sm-4 col-md-2")
+        div(class="radio col-sm-12 col-md-2")
             label
                 input(type="radio" name="acr_value" value="only_password")
                 .
                     only_password
 
-        h4(class="margin-top col-sm-12")  Response Types
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="col-md-12")
+            h4(class="margin-top")  Response Types
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="response_code" id="response_code" checked)
                 .
                     code
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="response_id_token" id="response_id_token")
                 .
                     id_token
-        div(class="checkbox col-xs-12 col-sm-4 col-md-2")
+        div(class="checkbox col-sm-12 col-md-2")
             label
                 input(type="checkbox" name="response_token" id="response_token")
                 .
                     token
 
-        h4(class="margin-top col-sm-12")  More Params
+        div(class="col-md-12")
+            h4(class="margin-top")  More Params
         div(class="col-sm-12")
             div(class="form-group")
                 label(for="max_age") Max Age:

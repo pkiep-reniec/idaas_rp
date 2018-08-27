@@ -47,7 +47,7 @@ $(document).ready(function () {
         } else {
             var data = $(this).serialize();
 
-            $.post(BASE_URL + 'auth', data, function (response) {
+            $.post(BASE_URL + '/auth', data, function (response) {
                 location.href = response.url;
             });
         }
@@ -78,14 +78,14 @@ function procResult(data) {
                         localStorage.setItem('resAuth', JSON.stringify(resAuth));
                         localStorage.setItem('resUser', JSON.stringify(response));
 
-                        location.href = BASE_URL + 'info-implicit';
+                        location.href = BASE_URL + '/info-implicit';
                     });
                 } else {
                     localStorage.setItem('idaas', JSON.stringify(idaas));
                     localStorage.setItem('resAuth', JSON.stringify(resAuth));
                     localStorage.setItem('resUser', '');
 
-                    location.href = BASE_URL + 'info-implicit';
+                    location.href = BASE_URL + '/info-implicit';
                 }
             } else {
                 alert('state not match');
