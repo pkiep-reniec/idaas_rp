@@ -1,8 +1,8 @@
-var httpBuildQuery = require('http-build-query');
-var config = require('../config/config.json');
+let httpBuildQuery = require('http-build-query');
+let config = require('../config/config.json');
 
-var controller = {
-    getIndex: function (req, res, next) {
+let controller = {
+    getIndex: (req, res, next) => {
         resAuth = Buffer.from(JSON.stringify(req.session.resAuth)).toString('base64');
         resToken = Buffer.from(JSON.stringify(req.session.resToken)).toString('base64');
         resUser = Buffer.from(JSON.stringify(req.session.resUser)).toString('base64');
@@ -19,12 +19,12 @@ var controller = {
             baseUrl: config.app.baseUrl
         });
     },
-    getIndexImplicit: function (req, res, next) {
+    getIndexImplicit: (req, res, next) => {
         res.render('info_implicit', {
             baseUrl: config.app.baseUrl
         });
     },
-    getLogout: function (req, res, next) {
+    getLogout: (req, res, next) => {
         let params = {
             post_logout_redirect_uri: config.app.baseUrl
         };

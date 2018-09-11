@@ -1,10 +1,10 @@
-var request = require('request');
-var httpBuildQuery = require('http-build-query');
-var randomstring = require("randomstring");
-var config = require('../config/config.json');
+let request = require('request-promise');
+let httpBuildQuery = require('http-build-query');
+let randomstring = require("randomstring");
+let config = require('../config/config.json');
 
-var controller = {
-    getIndex: function (req, res, next) {
+let controller = {
+    getIndex: (req, res, next) => {
         let cookie = req.cookies.idaas;
         let data = '';
         let ops = [];
@@ -24,7 +24,7 @@ var controller = {
             defaultClientSecret: config.idaas.client_secret
         });
     },
-    postAuth: function (req, res, next) {
+    postAuth: async (req, res, next) => {
         if (req.body.save == 'on') {
             let cookie = req.cookies.idaas;
 
@@ -61,29 +61,29 @@ var controller = {
             }
         }
 
-        procWebfinger(req.body)
-            .then(function (response) {
-                procDiscover(response)
-                    .then(function (response) {
-                        req.session.idaas = response;
-                        req.session.reqParam = req.body;
-                        req.session.state = randomstring.generate();
+        let webFinger = await procWebfinger(req.body);
 
-                        let url = buildAuthRequest(req.body, response, req.session.state);
+        if (webFinger == null) {
+            res.sendStatus(400);
+        }
 
-                        res.json({url: url});
-                    }, function (error) {
-                        console.log(error);
-                        res.sendStatus(error.code);
-                    });
-            }, function (error) {
-                console.log(error);
-                res.sendStatus(error.code);
-            });
+        let discover = await procDiscover(webFinger);
+
+        if (discover == null) {
+            res.sendStatus(400);
+        }
+
+        req.session.idaas = discover;
+        req.session.reqParam = req.body;
+        req.session.state = randomstring.generate();
+
+        let url = buildAuthRequest(req.body, discover, req.session.state);
+
+        res.json({url: url});
     }
 };
 
-var buildAuthRequest = function (reqParams, idaas, state) {
+let buildAuthRequest = (reqParams, idaas, state) => {
     let params = {
         response_type: '',
         client_id: reqParams.client_id,
@@ -158,64 +158,43 @@ var buildAuthRequest = function (reqParams, idaas, state) {
     return url;
 };
 
-var procDiscover = function (webfinger) {
+let procDiscover = async (webfinger) => {
     let url = webfinger.links.href + '/.well-known/openid-configuration';
+    let result = null;
 
-    return new Promise(function (resolve, reject) {
-        request({
+    try {
+        result = await request({
             url: url,
-            rejectUnauthorized: false
-        }, function (error, response, body) {
-            try {
-                let data = JSON.parse(body);
-
-                if (!error && response.statusCode == 200) {
-                    resolve(data);
-                } else {
-                    if (response != undefined && !isNaN(response.statusCode)) {
-                        reject({data: data, code: response.statusCode});
-                    } else {
-                        reject({data: null, code: 500});
-                    }
-                }
-            } catch (err) {
-                reject({data: null, code: 500});
-            }
+            method: 'GET',
+            json: true
         });
-    });
+    } catch (err) {
+        console.log(err);
+    }
+
+    return result;
 };
 
-var procWebfinger = function (reqParams) {
+let procWebfinger = async (reqParams) => {
     let params = {
         resource: reqParams.url,
         rel: 'http://openid.net/specs/connect/1.0/issuer'
     };
     let url = reqParams.url + '/.well-known/webfinger';
+    let result = null;
 
-    return new Promise(function (resolve, reject) {
-        request({
+    try {
+        result = await request({
             url: url,
-            rejectUnauthorized: false,
             method: 'GET',
+            json: true,
             qs: params
-        }, function (error, response, body) {
-            try {
-                let data = JSON.parse(body);
-
-                if (!error && response.statusCode == 200) {
-                    resolve(data);
-                } else {
-                    if (response != undefined && !isNaN(response.statusCode)) {
-                        reject({data: data, code: response.statusCode});
-                    } else {
-                        reject({data: null, code: 500});
-                    }
-                }
-            } catch (err) {
-                reject({data: null, code: 500});
-            }
         });
-    });
+    } catch (err) {
+        console.log(err);
+    }
+
+    return result;
 };
 
 module.exports = controller;
