@@ -9,7 +9,7 @@ module.exports = function () {
     router.get('', (req, res, next) => {
         homeController.getIndex(req, res, next);
     });
-    router.post('/auth', (req, res, next) => {
+    router.get('/auth', (req, res, next) => {
         homeController.postAuth(req, res, next);
     });
     router.get('/auth-endpoint', (req, res, next) => {

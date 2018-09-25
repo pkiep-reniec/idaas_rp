@@ -25,35 +25,35 @@ let controller = {
         });
     },
     postAuth: async (req, res, next) => {
-        if (req.body.save == 'on') {
+        if (req.query.save == 'on') {
             let cookie = req.cookies.idaas;
 
             if (cookie === undefined) {
                 res.cookie('idaas', JSON.stringify([{
                     id: 1,
-                    url: req.body.url,
-                    client_id: req.body.client_id,
-                    client_secret: req.body.client_secret,
-                    redirect_uri: req.body.redirect_uri
+                    url: req.query.url,
+                    client_id: req.query.client_id,
+                    client_secret: req.query.client_secret,
+                    redirect_uri: req.query.redirect_uri
                 }]), {maxAge: 60 * 60 * 24 * 365 * 5, httpOnly: true});
             } else {
                 let jCookie = JSON.parse(cookie);
                 let save = true;
 
                 for (i = 0; i < jCookie.length; i++) {
-                    if (jCookie[i].url == req.body.url) {
+                    if (jCookie[i].url == req.query.url) {
                         save = false;
                         break;
                     }
                 }
 
-                if (save && req.body.op == 0) {
+                if (save && req.query.op == 0) {
                     jCookie.push({
                         id: jCookie[jCookie.length - 1].id + 1,
-                        url: req.body.url,
-                        client_id: req.body.client_id,
-                        client_secret: req.body.client_secret,
-                        redirect_uri: req.body.redirect_uri
+                        url: req.query.url,
+                        client_id: req.query.client_id,
+                        client_secret: req.query.client_secret,
+                        redirect_uri: req.query.redirect_uri
                     });
 
                     res.cookie('idaas', JSON.stringify(jCookie), {maxAge: 60 * 60 * 24 * 365 * 5, httpOnly: true});
@@ -61,7 +61,7 @@ let controller = {
             }
         }
 
-        let webFinger = await procWebfinger(req.body);
+        let webFinger = await procWebfinger(req.query);
 
         if (webFinger == null) {
             res.sendStatus(400);
@@ -74,10 +74,10 @@ let controller = {
         }
 
         req.session.idaas = discover;
-        req.session.reqParam = req.body;
+        req.session.reqParam = req.query;
         req.session.state = randomstring.generate();
 
-        let url = buildAuthRequest(req.body, discover, req.session.state);
+        let url = buildAuthRequest(req.query, discover, req.session.state);
 
         res.json({url: url});
     }

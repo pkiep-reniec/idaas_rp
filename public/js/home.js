@@ -47,7 +47,7 @@ $(document).ready(function () {
         } else {
             var data = $(this).serialize();
 
-            $.post(BASE_URL + '/auth', data, function (response) {
+            $.get(BASE_URL + '/auth', data, function (response) {
                 location.href = response.url;
             });
         }
