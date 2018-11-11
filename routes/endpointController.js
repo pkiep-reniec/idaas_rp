@@ -1,5 +1,6 @@
 let request = require('request-promise');
 let config = require('../config/config.json');
+let logger = require('../server/logger').logger;
 
 let controller = {
     getIndex: async (req, res, next) => {
@@ -45,6 +46,8 @@ let controller = {
 };
 
 let userinfoEndpoint = async (req, data) => {
+    logger.info('start userinfoEndpoint');
+
     let url = req.session.idaas.userinfo_endpoint;
     let result = null;
 
@@ -58,13 +61,17 @@ let userinfoEndpoint = async (req, data) => {
             }
         });
     } catch (err) {
-        console.log(err);
+        logger.info(err);
     }
+
+    logger.info('end userinfoEndpoint');
 
     return result;
 };
 
 let tokenEndpoint = async (req) => {
+    logger.info('start tokenEndpoint');
+
     let url = req.session.idaas.token_endpoint;
     let params = {
         grant_type: 'authorization_code',
@@ -83,8 +90,10 @@ let tokenEndpoint = async (req) => {
             form: params
         });
     } catch (err) {
-        console.log(err);
+        logger.info(err);
     }
+
+    logger.info('end tokenEndpoint');
 
     return result;
 };
