@@ -2,6 +2,7 @@ let request = require('request-promise');
 let httpBuildQuery = require('http-build-query');
 let randomstring = require("randomstring");
 let config = require('../config/config.json');
+let logger = require('../server/logger').logger;
 
 let controller = {
     getIndex: (req, res, next) => {
@@ -159,6 +160,8 @@ let buildAuthRequest = (reqParams, idaas, state) => {
 };
 
 let procDiscover = async (webfinger) => {
+    logger.info('start procDiscover');
+
     let url = webfinger.links.href + '/.well-known/openid-configuration';
     let result = null;
 
@@ -169,13 +172,16 @@ let procDiscover = async (webfinger) => {
             json: true
         });
     } catch (err) {
-        console.log(err);
+        logger.info(err);
     }
+
+    logger.info('end procDiscover');
 
     return result;
 };
 
 let procWebfinger = async (reqParams) => {
+    logger.info('start procWebfinger');
     let params = {
         resource: reqParams.url,
         rel: 'http://openid.net/specs/connect/1.0/issuer'
@@ -191,8 +197,10 @@ let procWebfinger = async (reqParams) => {
             qs: params
         });
     } catch (err) {
-        console.log(err);
+        logger.info(err);
     }
+
+    logger.info('end procWebfinger');
 
     return result;
 };
