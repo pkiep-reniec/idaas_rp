@@ -78,42 +78,61 @@ block content
         div(class="col-sm-12")
             h4(class="margin-top")  Acr
         div(class="col-sm-12")
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="one_factor" checked)
-                    .
-                        one_factor
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="two_factor")
-                    .
-                        two_factor
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="pki_dnie")
-                    .
-                        pki_dnie
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="pki_token")
-                    .
-                        pki_token
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="only_password")
-                    .
-                        only_password
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="only_questions")
-                    .
-                        only_questions
-            div(class="radio col-sm-12 col-md-2")
-                label
-                    input(type="radio" name="acr_value" value="fingerprint_mobile")
-                    .
-                        fingerprint_mobile
+            div(class="col-sm-12")
+                p Nivel 0
+                hr
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="only_questions")
+                        .
+                            only_questions
 
+            div(class="col-sm-12")
+                p Nivel 1
+                hr
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="one_factor" checked)
+                        .
+                            one_factor
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="only_password")
+                        .
+                            only_password
+
+            div(class="col-sm-12")
+                p Nivel 2
+                hr
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="two_factor")
+                        .
+                            two_factor
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="fingerprint_mobile")
+                        .
+                            fingerprint_mobile
+
+            div(class="col-sm-12")
+                p Nivel 3
+                hr
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="pki_dnie")
+                        .
+                            pki_dnie
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="pki_dnie_mobile")
+                        .
+                            pki_dnie_mobile
+                div(class="radio col-sm-12 col-md-2")
+                    label
+                        input(type="radio" name="acr_value" value="pki_token")
+                        .
+                            pki_token
 
         div(class="col-sm-12")
             h4(class="margin-top")  Response Types
