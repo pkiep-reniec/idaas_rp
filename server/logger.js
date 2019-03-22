@@ -1,7 +1,7 @@
-var winston = require('winston');
-var expressWinston = require('winston-express-middleware');
+const winston = require('winston');
+const expressWinston = require('winston-express-middleware');
 
-var logConfig = {
+let logConfig = {
     transports: [
         new (winston.transports.Console)({json: false, timestamp: true}),
         // new winston.transports.File({filename: __dirname + '/../logs/debug.log', json: false})
@@ -13,7 +13,7 @@ var logConfig = {
     exitOnError: false
 };
 
-var middleware = new (expressWinston.logger)(logConfig);
-var logger = new (winston.Logger)(logConfig);
+let middleware = new (expressWinston.logger)(logConfig);
+let logger = new (winston.Logger)(logConfig);
 
 module.exports = {middleware: middleware, logger: logger};

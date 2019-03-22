@@ -2,36 +2,6 @@ extends layout
 
 block content
     form(method="post" id="form")
-        div(class="col-md-12")
-            h4(class="margin-top")  Config
-        div(class="col-md-12")
-            select(class="form-control" name="op" id="op")
-                option(value="0") Seleccionar
-                each op in ops
-                    option(value=op.id) #{op.url}
-
-            div(class="form-group margin-top")
-                label(for="url") Url:
-                input(class="form-control clean-data" name="url" id="url" value=defaultUrl)
-
-            div(class="form-group margin-top")
-                label(for="client_id") Client ID:
-                input(class="form-control clean-data" name="client_id" id="client_id" value=defaultClientId)
-
-            div(class="form-group margin-top")
-                label(for="client_secret") Client Secret:
-                input(class="form-control clean-data" name="client_secret" id="client_secret" value=defaultClientSecret)
-
-            div(class="form-group margin-top")
-                label(for="redirect_uri") Redirect Uri:
-                input(class="form-control clean-data" name="redirect_uri" id="redirect_uri" value=baseUrl + '/auth-endpoint')
-
-            div(class="checkbox")
-                label
-                    input(class="clean-data" type="checkbox" name="save" id="save" checked)
-                    .
-                        Guardar config
-
         div(class="col-sm-12")
             h4(class="margin-top")  Prompt
         div(class="col-sm-12")
@@ -142,16 +112,16 @@ block content
                     input(type="checkbox" name="response_code" id="response_code" checked)
                     .
                         code
-            //div(class="checkbox col-sm-12 col-md-2")
-            //    label
-            //        input(type="checkbox" name="response_id_token" id="response_id_token")
-            //        .
-            //            id_token
-            //div(class="checkbox col-sm-12 col-md-2")
-            //    label
-            //        input(type="checkbox" name="response_token" id="response_token")
-            //        .
-            //            token
+            div(class="checkbox col-sm-12 col-md-2")
+                label
+                    input(type="checkbox" name="response_id_token" id="response_id_token")
+                    .
+                        id_token
+            div(class="checkbox col-sm-12 col-md-2")
+                label
+                    input(type="checkbox" name="response_token" id="response_token")
+                    .
+                        token
 
         div(class="col-sm-12")
             h4(class="margin-top")  More Params
@@ -168,9 +138,7 @@ block content
             button(class="btn btn-primary" id="btnSubmit") Autenticar
 
 block scripts
-    script.
-        var data = '#{data}';
-        var idaasUrl = '#{idaasUrl}';
-
     script(src="js/main.js")
+    script(src="js/constants.js")
+    script(src="js/auth.js")
     script(src="js/home.js")

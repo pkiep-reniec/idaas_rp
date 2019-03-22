@@ -1,5 +1,10 @@
-let httpBuildQuery = require('http-build-query');
-let config = require('../config/config.json');
+/**
+ * Created by Miguel Pazo (https://miguelpazo.com)
+ */
+
+const config = require('../config/config.json');
+const configAuth = require('./../config/reniec_idaas.json');
+const reniecIdaas = require('reniec-idaas');
 
 let controller = {
     getIndex: (req, res, next) => {
@@ -7,34 +12,30 @@ let controller = {
         resToken = Buffer.from(JSON.stringify(req.session.resToken)).toString('base64');
         resUser = Buffer.from(JSON.stringify(req.session.resUser)).toString('base64');
 
-        uriToken = req.session.idaas.token_endpoint;
-        uriUser = req.session.idaas.userinfo_endpoint;
+        uriToken = configAuth.token_uri;
+        uriUser = configAuth.userinfo_uri;
 
-        res.render('info', {
+        return res.render('info', {
             resAuth: resAuth,
             resToken: resToken,
             resUser: resUser,
             uriToken: uriToken,
             uriUser: uriUser,
-            baseUrl: config.app.baseUrl
+            baseUrl: config.app.baseUrl,
+            clientId: configAuth.client_id
         });
     },
+
     getIndexImplicit: (req, res, next) => {
-        res.render('info_implicit', {
-            baseUrl: config.app.baseUrl
+        return res.render('info_implicit', {
+            baseUrl: config.app.baseUrl,
+            clientId: configAuth.client_id
         });
     },
+
     getLogout: (req, res, next) => {
-        let params = {
-            post_logout_redirect_uri: config.app.baseUrl
-        };
-
-        let logoutUri = req.session.idaas.end_session_endpoint;
-        logoutUri += '?' + httpBuildQuery(params);
-
-        req.session.destroy();
-
-        res.redirect(logoutUri);
+        let logoutUri = reniecIdaas.getLogoutUri(config.app.baseUrl);
+        return res.redirect(logoutUri);
     }
 };
 

@@ -5,3 +5,4 @@
 *.rdb
 *.log*
 package-lock.json
+reniec_idaas.json

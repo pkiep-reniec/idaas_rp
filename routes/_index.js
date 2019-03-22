@@ -1,8 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var homeController = require('./homeController');
-var endpointController = require('./endpointController');
-var infoController = require('./infoController');
+/**
+ * Created by Miguel Pazo (https://miguelpazo.com)
+ */
+
+const express = require('express');
+const router = express.Router();
+const homeController = require('./homeController');
+const endpointController = require('./endpointController');
+const infoController = require('./infoController');
 
 module.exports = function () {
 

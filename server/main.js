@@ -1,18 +1,16 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-// var logger = require('morgan');
-var logMiddleware = require('./logger.js').middleware;
-var cookieParser = require('cookie-parser');
-var cookieEncrypter = require('cookie-encrypter');
-var bodyParser = require('body-parser');
-var session = require('express-session')
-
-var config = require('../config/config.json');
-var app = express();
-var server = require('http').Server(app);
-var router = require('../routes/_index')();
-var middleware = require('../middleware/_index');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logMiddleware = require('./logger.js').middleware;
+const cookieParser = require('cookie-parser');
+const cookieEncrypter = require('cookie-encrypter');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const config = require('../config/config.json');
+const app = express();
+const server = require('http').Server(app);
+const router = require('../routes/_index')();
+const middleware = require('../middleware/_index');
 
 app.set('trust proxy', '127.0.0.1');
 
@@ -27,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //middlewares
-for (var i = 0; i < middleware.length; i++) {
+for (let i = 0; i < middleware.length; i++) {
     app.use(middleware[i]);
 }
 
@@ -43,7 +41,7 @@ app.use(logMiddleware);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });

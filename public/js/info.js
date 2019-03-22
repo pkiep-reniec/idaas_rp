@@ -1,3 +1,7 @@
+/**
+ * Created by Miguel Pazo (https://miguelpazo.com)
+ */
+
 $(document).ready(function () {
     var bootstrap = function () {
         //Auth Endpoint

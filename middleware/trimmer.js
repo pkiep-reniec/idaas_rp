@@ -1,11 +1,15 @@
-var _ = require('underscore');
+/**
+ * Created by Miguel Pazo (https://miguelpazo.com)
+ */
+
+const _ = require('underscore');
 
 module.exports = function (req, res, next) {
     exclude = [
         'password',
     ];
 
-    var convertInt = function (value) {
+    let convertInt = function (value) {
         if (!isNaN(value)) {
             return parseInt(value);
         }

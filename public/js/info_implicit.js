@@ -1,4 +1,6 @@
-var idaas = {};
+/**
+ * Created by Miguel Pazo (https://miguelpazo.com)
+ */
 
 $(document).ready(function () {
     $('#btn_logout').click(function (e) {
@@ -6,34 +8,29 @@ $(document).ready(function () {
 
         localStorage.clear();
 
-        params = {
-            post_logout_redirect_uri: BASE_URL
-        };
+        ReniecIDaaS.init({
+            clientId: CLIENT_ID
+        });
 
-        location.href = idaas.end_session_endpoint + '?' + encodeQueryData(params);
+        ReniecIDaaS.logout(BASE_URL);
     });
 
     var bootstrap = function () {
-        idaas = localStorage.getItem('idaas');
-        resAuth = localStorage.getItem('resAuth');
-        resUser = localStorage.getItem('resUser');
+        authResponse = JSON.parse(localStorage.getItem('authResponse'));
+        procJson(authResponse.idTokenParser, 'content_idtoken');
 
-        idaas = JSON.parse(idaas);
-
-        //Auth Endpoint
-        procJson(resAuth, 'content_auth', true);
-
-        if (resUser != '') {
-            $('.hide-userinfo').show();
-            //UserInfo Endpoint
-            procJson(resUser, 'content_userinfo', false);
+        if (authResponse.userInfo) {
+            $('.userinfo').show();
+            procJson(authResponse.userInfo, 'content_userinfo');
         } else {
-            $('.hide-userinfo').hide();
+            $('.userinfo').hide();
         }
-
-        //Uris
-        $('#url_userinfo').text(idaas.userinfo_endpoint);
     };
 
     bootstrap();
 });
+
+function procJson(data, id) {
+    element = document.getElementById(id);
+    treeToken = jsonTree.create(data, element);
+}
