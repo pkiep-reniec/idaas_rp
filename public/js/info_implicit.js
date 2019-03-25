@@ -29,8 +29,3 @@ $(document).ready(function () {
 
     bootstrap();
 });
-
-function procJson(data, id) {
-    element = document.getElementById(id);
-    treeToken = jsonTree.create(data, element);
-}

@@ -5,13 +5,13 @@
 $(document).ready(function () {
     var bootstrap = function () {
         //Auth Endpoint
-        procJson(atob(resAuth), 'content_auth', false);
+        procJson(JSON.parse(atob(resAuth)), 'content_auth');
 
         //Token Endpoint
-        procJson(atob(resToken), 'content_token', true);
+        procJson(JSON.parse(atob(resToken)), 'content_token');
 
         //UserInfo Endpoint
-        procJson(atob(resUser), 'content_userinfo', false);
+        procJson(JSON.parse(atob(resUser)), 'content_userinfo');
     };
 
     bootstrap();

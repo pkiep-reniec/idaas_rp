@@ -10,3 +10,8 @@ $(document).ajaxError(function (event, jqxhr, settings, err) {
     loading(false);
     alert('Ha ocurrido un error, por favor vuelve a intentarlo');
 });
+
+function procJson(data, id) {
+    element = document.getElementById(id);
+    treeToken = jsonTree.create(data, element);
+}
