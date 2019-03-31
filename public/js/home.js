@@ -4,7 +4,6 @@
 
 var timer = null;
 var params = {};
-var idaas = {};
 
 $(document).ready(function () {
     $('#form').submit(function (e) {
