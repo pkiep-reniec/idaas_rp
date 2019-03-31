@@ -25,5 +25,6 @@ const ReniecIdaasConst = {
     EVENT_CONNECTED: 'ReniecIDaaS_connected',
     EVENT_CANCEL: 'ReniecIDaaS_cancel',
     ERROR_INVALID_ORIGIN_JS: 'ReniecIDaaS_invalid_origin_js',
-    EVENT_AUTH_COMPLETE: 'ReniecIDaaS_auth_complete'
+    EVENT_AUTH_COMPLETE: 'ReniecIDaaS_auth_complete',
+    EVENT_RELOAD: 'ReniecIDaaS_reload',
 };

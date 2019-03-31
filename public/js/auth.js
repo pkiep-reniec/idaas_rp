@@ -23,6 +23,7 @@ var onCancelAction = null;
 var onSuccessAction = null;
 var state = null;
 var nonce = null;
+var isReload = false;
 
 var ReniecIDaaS = {
     init: function (params) {
@@ -165,17 +166,25 @@ function procFinalResponse(response) {
 /*Events*/
 window.addEventListener('message', function (event) {
     if (idaasUris.auth.indexOf(event.origin) === 0) {
-        console.log(event.data);
+        // console.log(event.data);
 
         switch (event.data.event) {
             case ReniecIdaasConst.EVENT_LOADED:
-                popup.postMessage({
-                    event: ReniecIdaasConst.EVENT_CONNECTED,
-                    code: event.data.code
-                }, '*');
+                if (!isReload) {
+                    console.info('Event fired: ' + ReniecIdaasConst.EVENT_LOADED);
+
+                    popup.postMessage({
+                        event: ReniecIdaasConst.EVENT_CONNECTED,
+                        code: event.data.code
+                    }, '*');
+                }
+
+                isReload = false;
                 break;
 
             case ReniecIdaasConst.EVENT_AUTH_COMPLETE:
+                console.info('Event fired: ' + ReniecIdaasConst.EVENT_AUTH_COMPLETE);
+
                 if (state === event.data.data.state) {
                     var idTokenParser = parseJwt(event.data.data.id_token);
 
@@ -203,13 +212,24 @@ window.addEventListener('message', function (event) {
 
                 break;
 
+            case ReniecIdaasConst.EVENT_RELOAD:
+                console.info('Event fired: ' + ReniecIdaasConst.EVENT_RELOAD);
+                isReload = true;
+                break;
+
             case ReniecIdaasConst.EVENT_CANCEL:
-                if (typeof onCancelAction === "function") {
-                    onCancelAction();
+                if (!isReload) {
+                    console.info('Event fired: ' + ReniecIdaasConst.EVENT_CANCEL);
+
+                    if (typeof onCancelAction === "function") {
+                        onCancelAction();
+                    }
                 }
                 break;
 
             case ReniecIdaasConst.ERROR_INVALID_ORIGIN_JS:
+                console.info('Event fired: ' + ReniecIdaasConst.ERROR_INVALID_ORIGIN_JS);
+
                 if (typeof onCancelAction === "function") {
                     onCancelAction();
                 }
