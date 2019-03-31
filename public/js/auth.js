@@ -165,6 +165,8 @@ function procFinalResponse(response) {
 /*Events*/
 window.addEventListener('message', function (event) {
     if (idaasUris.auth.indexOf(event.origin) === 0) {
+        console.log(event.data);
+
         switch (event.data.event) {
             case ReniecIdaasConst.EVENT_LOADED:
                 popup.postMessage({

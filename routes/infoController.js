@@ -34,6 +34,8 @@ let controller = {
     },
 
     getLogout: (req, res, next) => {
+        reniecIdaas.setConfig({config: configAuth});
+
         let logoutUri = reniecIdaas.getLogoutUri(config.app.baseUrl);
         return res.redirect(logoutUri);
     }
