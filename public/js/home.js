@@ -8,7 +8,6 @@ var params = {};
 $(document).ready(function () {
     $('#form').submit(function (e) {
         e.preventDefault();
-        loading(true);
 
         if ($('#response_id_token').is(':checked') || $('#response_token').is(':checked')) {
             var params = filterParams();
@@ -17,6 +16,10 @@ $(document).ready(function () {
             });
 
             ReniecIDaaS.init(paramsFinal);
+
+            ReniecIDaaS.onLoad(function () {
+                loading(true);
+            });
 
             ReniecIDaaS.onCancel(function () {
                 loading(false);
@@ -29,6 +32,8 @@ $(document).ready(function () {
 
             ReniecIDaaS.auth();
         } else {
+            loading(true);
+            
             var data = $(this).serialize();
 
             $.get(BASE_URL + '/auth', data, function (response) {
