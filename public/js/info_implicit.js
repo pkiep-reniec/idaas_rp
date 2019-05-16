@@ -12,7 +12,7 @@ $(document).ready(function () {
             clientId: CLIENT_ID
         });
 
-        ReniecIDaaS.logout(BASE_URL);
+        ReniecIDaaS.logout(BASE_URL + '/');
     });
 
     var bootstrap = function () {
