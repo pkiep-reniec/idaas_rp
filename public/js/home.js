@@ -27,7 +27,7 @@ $(document).ready(function () {
 
             ReniecIDaaS.onSuccess(function (response) {
                 localStorage.setItem('authResponse', JSON.stringify(response));
-                location.href = BASE_URL + '/info-implicit';
+                location.href = BASE_URL + 'info-implicit';
             });
 
             ReniecIDaaS.auth();
@@ -36,7 +36,7 @@ $(document).ready(function () {
             
             var data = $(this).serialize();
 
-            $.get(BASE_URL + '/auth', data, function (response) {
+            $.get(BASE_URL + 'auth', data, function (response) {
                 location.href = response.url;
             });
         }
