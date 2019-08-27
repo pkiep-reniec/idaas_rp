@@ -20,7 +20,7 @@ let controller = {
         let state = randomstring.generate();
         let params = filterParams(req.query);
         let paramsFinal = _.extend(params, {
-            redirectUri: config.app.baseUrl + 'auth-endpoint',
+            redirectUri: config.app.baseUrl + '/auth-endpoint',
             state: state,
             config: configAuth
         });

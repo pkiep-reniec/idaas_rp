@@ -47,7 +47,7 @@ let controller = {
         req.session.resToken = tokens;
         req.session.resUser = userInfo;
 
-        return res.redirect(config.app.baseUrl + 'info');
+        return res.redirect(config.app.baseUrl + '/info');
     }
 };
 
