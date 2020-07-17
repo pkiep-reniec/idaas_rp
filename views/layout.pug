@@ -30,6 +30,7 @@ head
     link(rel='stylesheet', href='css/estilos.css')
     link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
     link(rel='stylesheet', href='css/icheck-material.min.css', type='text/css')
+    link(rel='stylesheet', href='libs/mdi/css/materialdesignicons.min.css', type='text/css')
 
     block styles
 
@@ -42,7 +43,10 @@ body
         div.container.flex-row.d-flex.align-items-start.justify-content-between
             img.img-fluid.centrar_logo(src='img/logo_autenticacion_digital.svg', width='220', height='auto', alt='')
     div.container
-        h1 RP - ID Perú
+        h1(class="mb-2") RP - ID Perú
+        div.mb-3
+            a(class="btn btn-home" href=baseUrl)
+                i(class="mdi mdi-home" aria-hidden="true")
         block content
 
     script(type='text/javascript', src='libs/jquery/dist/jquery.min.js')

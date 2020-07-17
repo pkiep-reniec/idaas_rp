@@ -18,6 +18,7 @@
     "bootstrap": "^4.5.0",
     "SpinKit": "spinkit#^1.2.5",
     "jsonTreeViewer": "https://github.com/summerstyle/jsonTreeViewer.git#^0.6.0",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "mdi": "^5.3.45"
   }
 }

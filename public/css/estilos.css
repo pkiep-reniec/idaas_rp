@@ -122,6 +122,23 @@ input[type=radio]{
 	background-color: #b10800;
 	color: #ffffff;
 }
+
+.btn-home {
+    background-color: #ffffff;
+    color: #AE271C;
+    padding: 0 .55rem;
+    border: 1px solid #AE271C;
+}
+
+.btn-home i {
+    font-size: 1.3rem;
+}
+
+.btn-home:hover{
+    color: #AE271C;
+    background-color: rgba(174, 39, 28, 0.2);
+}
+
 /*  Personalizando checkbox y radio */
 html input[disabled] {
     cursor: default;
