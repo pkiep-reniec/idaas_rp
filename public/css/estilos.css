@@ -1,0 +1,181 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900');
+*{
+	margin: 0;
+	padding: 0;
+	}
+body {
+    background: #ffffff;
+	font-size: 16px;
+    color: #666666;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+.header {
+    background: #E6332A; /* Old browsers */
+	color: #ffffff;
+    padding: 10px 0;
+	box-sizing: border-box;
+	margin-bottom: 2em;
+	position: sticky;
+  	top: 0;
+	z-index: 2;
+}
+.header h1{
+	width: 100%;
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+h1{
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.7em;
+	color: #AE271C;
+	margin-bottom: 0.75em;
+}
+.centrar_logo{
+	margin-left: auto;
+	margin-right: auto;
+}
+h2{
+	padding: 8px 0px;
+	font-size: 1.125em;
+	/* border-bottom: 1px solid #ccc; */
+	background: rgba(174, 39, 28, 0.2);
+	color: #AE271C;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-radius: 0px 5px 5px 0px;
+	border-left: 5px solid #AE271C;
+	font-family: 'Poppins', sans-serif;
+}
+label{
+	font-size: 0.9em;
+}
+.margen_bottom2{
+	margin-bottom: 1.5em;
+}
+.contenido{
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 1.5em;
+}
+input[type=checkbox]{
+	margin-right: 7px;
+	width: 20px;
+	height: 20px;
+}
+input[type=radio]{
+	margin-right: 7px;
+	width: 20px;
+	height: 20px;
+}
+.footer {
+	width: 100%;
+    background: #E6332A;
+    z-index: 1;
+    padding: 0;
+    color: #ffffff;
+    font-size: 0.8em ;
+	box-sizing: border-box;
+	position: relative;
+}
+.footer a{
+    color: #ffffff;
+    font-weight: bold;
+}
+.footer p{
+	margin: 4px 0px;
+}
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #E6332A;
+    z-index: -1;
+    color: #fff;
+}
+.logo_footer{
+    line-height: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.logo_footer img{
+    margin-bottom: 20px;
+}
+.footer_datos{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.btn-autenticar {
+    color: #fff;
+    background-color: #E6332A;
+	border: none;
+}
+.btn-autenticar:hover{
+	background-color: #b10800;
+	color: #ffffff;
+}
+/*  Personalizando checkbox y radio */
+html input[disabled] {
+    cursor: default;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input {
+    line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.formulario_rp{
+	margin-bottom: 50px;
+}

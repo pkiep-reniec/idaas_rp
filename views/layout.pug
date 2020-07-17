@@ -27,6 +27,9 @@ head
     // CSS's
     link(rel='stylesheet', href='libs/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='css/main.css')
+    link(rel='stylesheet', href='css/estilos.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+    link(rel='stylesheet', href='css/icheck-material.min.css', type='text/css')
 
     block styles
 
@@ -35,17 +38,12 @@ head
         var CLIENT_ID = '#{clientId}';
 
 body
-
+    header.header
+        div.container.flex-row.d-flex.align-items-start.justify-content-between
+            img.img-fluid.centrar_logo(src='img/logo_autenticacion_digital.svg', width='220', height='auto', alt='')
     div.container
-        div.row
-            div(class="text-center")
-                h3 RP de ID Perú
-
-            div.col-sm-12
-                a(class="btn btn-default" href=baseUrl)
-                    span(class="glyphicon glyphicon-home" aria-hidden="true")
-
-            block content
+        h1 RP - ID Perú
+        block content
 
     script(type='text/javascript', src='libs/jquery/dist/jquery.min.js')
     script(type='text/javascript', src='http://core.idaas.local/dist/reniec_idaas.js')

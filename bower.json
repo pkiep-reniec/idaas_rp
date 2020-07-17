@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.5.0",
     "SpinKit": "spinkit#^1.2.5",
     "jsonTreeViewer": "https://github.com/summerstyle/jsonTreeViewer.git#^0.6.0"
   }
