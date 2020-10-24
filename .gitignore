@@ -6,3 +6,5 @@
 *.log*
 package-lock.json
 reniec_idaas.json
+reniec_idaas.json.new
+reniec_idaas.json.old
